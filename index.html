@@ -1,0 +1,806 @@
+<title>Rashika | Organic Growth</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap');
+
+  :root{
+    --fuchsia:#E91E8C;
+    --fuchsia-deep:#C4106F;
+    --pink:#F8C8DC;
+    --navy:#1B1F3B;
+    --navy-soft:#2A2F55;
+    --navy-line: rgba(255,247,249,0.14);
+    --off:#FFF7F9;
+    --line: rgba(27,31,59,0.12);
+    --fuchsia-tint: rgba(233,30,140,0.08);
+    --serif: 'Libre Caslon Display', 'Times New Roman', serif;
+    --sans: 'Poppins', 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--off);
+    color:var(--navy);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+
+  .wrap{ max-width:1180px; margin:0 auto; padding-inline:24px; }
+  @media (min-width:1080px){ .wrap{ max-width:1360px; padding-inline:40px; } }
+  @media (min-width:1500px){ .wrap{ max-width:1520px; } }
+  section{ position:relative; }
+
+  /* ---------- top nav ---------- */
+  .sitenav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,31,59,0.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--navy-line);
+  }
+  .sitenav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-block:16px; }
+  .nav-brand{ font-family:var(--serif); font-size:1.2rem; color:var(--off); text-decoration:none; letter-spacing:.02em; }
+  .nav-book{
+    font-size:.82rem; font-weight:700; color:#fff; background:var(--fuchsia);
+    padding:10px 20px; border-radius:999px; text-decoration:none; white-space:nowrap;
+    transition:background .25s, transform .25s;
+  }
+  .nav-book:hover{ background:var(--fuchsia-deep); transform:translateY(-2px); }
+
+  .kicker{
+    font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .kicker::before{ content:""; width:22px; height:1px; background:currentColor; opacity:.6; }
+  .kicker.fuchsia{ color:var(--fuchsia-deep); }
+  .kicker.on-dark{ color:var(--pink); }
+
+  h2{ font-family:var(--serif); font-weight:400; line-height:1.12; text-wrap:balance; margin:0; }
+
+  /* ---------- reveal ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+    .reveal.in{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; } }
+
+  /* ================= PAGE 1 — COVER ================= */
+  .cover{
+    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color:var(--off);
+    min-height:82vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-block:70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";
+    position:absolute; top:-260px; right:-220px;
+    width:620px; height:620px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, rgba(233,30,140,.42), transparent 68%);
+  }
+  .cover::after{
+    content:"";
+    position:absolute; bottom:-300px; left:-200px;
+    width:560px; height:560px; border-radius:50%;
+    background:radial-gradient(circle at 60% 40%, rgba(248,200,220,.22), transparent 70%);
+  }
+  .cover-grid{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,247,249,.16) 1px, transparent 1px);
+    background-size:26px 26px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 75%);
+    opacity:.5;
+  }
+  .cover .wrap{ position:relative; z-index:1; }
+  .cover-kicker{ color:var(--pink); margin-bottom:40px; }
+  .cover-headline{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(2.6rem, 8vw, 6rem);
+    line-height:1.05; letter-spacing:-.01em;
+    margin:0 0 34px;
+  }
+  .cover-headline .line{ display:block; }
+  .cover-headline .accent{ color:var(--fuchsia); font-style:italic; }
+  .cover-sub{
+    font-size:1.05rem; line-height:1.7; color:rgba(255,247,249,.72);
+    max-width:42ch; margin:0;
+  }
+
+  /* ================= shared page shell ================= */
+  .page{ padding-block:96px; }
+  .page-head{ max-width:64ch; margin-bottom:48px; }
+  .page-head .kicker{ margin-bottom:16px; }
+  .page-head h2{ font-size:clamp(1.9rem, 3.6vw, 2.9rem); }
+
+  /* ================= PAGE 2 — TRANSFORMATION ================= */
+  .transformation{ background:var(--off); }
+  .transform-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:24px; overflow:hidden;
+  }
+  @media (max-width:900px){
+    .transform-grid{ grid-template-columns:repeat(2,1fr); }
+    .transform-cell.hero-cell{ grid-column:1 / -1; }
+  }
+  .transform-cell{ background:#fff; padding:48px 34px; display:flex; flex-direction:column; gap:14px; }
+  .transform-cell.hero-cell{ background:var(--navy); color:var(--off); }
+  .t-num{
+    font-family:var(--sans); font-weight:800; font-variant-numeric:tabular-nums;
+    font-size:clamp(2.6rem, 4.6vw, 3.6rem); letter-spacing:-.02em; line-height:1;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .t-num .accent{ color:var(--fuchsia); }
+  .t-arrow{ font-size:1.3rem; opacity:.5; font-weight:400; }
+  .t-label{ font-size:.96rem; line-height:1.5; font-weight:500; color:var(--navy-soft); }
+  .hero-cell .t-label{ color:rgba(255,247,249,.75); }
+  .t-window{ font-size:.74rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--fuchsia-deep); margin-top:auto; padding-top:10px; }
+  .hero-cell .t-window{ color:var(--pink); }
+  @media (max-width:560px){
+    .transform-cell{ padding:24px 16px; gap:10px; }
+    .t-num{ font-size:clamp(1.7rem,7vw,2.2rem); }
+    .t-label{ font-size:.82rem; }
+    .t-window{ font-size:.62rem; }
+  }
+  .timeline-strip{
+    margin-top:44px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--navy-soft);
+  }
+  .timeline-strip .dot{ width:6px; height:6px; border-radius:50%; background:var(--fuchsia); }
+
+  /* ================= PAGE 3 — PROOF (carousel) ================= */
+  .proof-section{ background:var(--navy); color:var(--off); }
+  .proof-section .page-head h2{ color:var(--off); }
+  .proof-pair{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .pp-card{
+    border:1px solid var(--navy-line); border-radius:20px; overflow:hidden;
+    background:rgba(255,247,249,.03); padding:20px; text-align:center;
+  }
+  .pp-shot{ border-radius:14px; overflow:hidden; border:1px solid var(--navy-line); margin-bottom:18px; }
+  .pp-shot img{ width:100%; height:auto; }
+  .pp-tag{ font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--pink); display:block; margin-bottom:10px; }
+  .pp-title{ font-family:var(--serif); font-weight:400; font-size:1.5rem; margin:0; }
+  @media (max-width:700px){ .proof-pair{ grid-template-columns:1fr; } }
+
+  .proof-stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--navy-line); border:1px solid var(--navy-line); border-radius:18px; overflow:hidden;
+    margin-top:40px;
+  }
+  @media (max-width:760px){ .proof-stats{ grid-template-columns:1fr; } }
+  .proof-stat{ background:rgba(255,247,249,.03); padding:28px 24px; }
+  .proof-stat .pn{ font-weight:800; font-size:1.7rem; font-variant-numeric:tabular-nums; }
+  .proof-stat .pn .accent{ color:var(--fuchsia); }
+  .proof-stat .pl{ font-size:.86rem; color:rgba(255,247,249,.62); margin-top:6px; }
+
+  /* ================= PAGE 4 — SYSTEM ================= */
+  .system-section{ background:var(--off); }
+  .funnel-row{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    margin-top:8px; border-radius:18px; overflow:hidden;
+  }
+  @media (max-width:920px){ .funnel-row{ grid-template-columns:repeat(2,1fr); } }
+  .funnel-cell{ padding:34px 26px; position:relative; display:flex; flex-direction:column; gap:14px; background:#fff; }
+  .fc-tag{ font-family:var(--sans); font-weight:800; font-size:.78rem; letter-spacing:.1em; color:var(--fuchsia); }
+  .fc-title{ font-family:var(--serif); font-weight:400; font-size:1.4rem; margin:0; }
+  .fc-desc{ font-size:.88rem; color:var(--navy-soft); line-height:1.6; }
+  .fc-pills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; }
+  @media (max-width:520px){
+    .funnel-cell{ padding:18px 14px; gap:8px; }
+    .fc-title{ font-size:1.05rem; }
+    .fc-desc{ font-size:.78rem; line-height:1.5; }
+    .pill{ font-size:.64rem; padding:5px 9px; }
+  }
+  .pill{ font-size:.72rem; font-weight:600; padding:6px 12px; border-radius:999px; background:var(--fuchsia-tint); color:var(--fuchsia-deep); }
+  .system-note{ margin-top:40px; font-family:var(--serif); font-style:italic; font-size:1.25rem; color:var(--navy); max-width:52ch; text-wrap:balance; }
+  .system-note b{ font-style:normal; color:var(--fuchsia-deep); }
+
+  /* ================= PAGE 5 — CONTENT (marquee) ================= */
+  .content-section{ background:var(--navy); color:var(--off); overflow:hidden; }
+  .content-section .page-head h2{ color:var(--off); }
+  .marquee-wrap{
+    position:relative; width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; cursor:grab;
+  }
+  .marquee-wrap::-webkit-scrollbar{ display:none; }
+  .marquee-wrap.dragging{ cursor:grabbing; }
+  .marquee-fade{ position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+  .marquee-fade.left{ left:0; background:linear-gradient(90deg, var(--navy), transparent); }
+  .marquee-fade.right{ right:0; background:linear-gradient(270deg, var(--navy), transparent); }
+  .marquee-track{ display:flex; gap:26px; width:max-content; padding-inline:24px; }
+  .reel-card{ cursor:pointer; }
+  .reel-card{
+    flex:0 0 auto; width:520px; height:280px;
+    background:rgba(255,247,249,.04); border:1px solid var(--navy-line); border-radius:20px;
+    display:grid; grid-template-columns:200px 1fr; overflow:hidden;
+    transition:border-color .3s, transform .3s;
+  }
+  .reel-card:hover{ border-color:var(--fuchsia); transform:translateY(-4px); }
+  .reel-shot{ height:100%; overflow:hidden; background:#000; }
+  .reel-shot img{ width:100%; height:100%; object-fit:cover; object-position:top; }
+  .reel-metrics{ padding:26px 24px; display:flex; flex-direction:column; justify-content:center; gap:16px; }
+  .rm-row{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .rm-label{ font-size:.76rem; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,247,249,.5); }
+  .rm-val{ font-weight:700; font-variant-numeric:tabular-nums; font-size:1.2rem; }
+  .rm-val.accent{ color:var(--pink); font-size:1.5rem; }
+  @media (max-width:900px){
+    .reel-card{ width:420px; height:240px; grid-template-columns:160px 1fr; }
+    .reel-metrics{ padding:20px 18px; gap:12px; }
+    .rm-val{ font-size:1.05rem; }
+    .rm-val.accent{ font-size:1.3rem; }
+  }
+  @media (max-width:560px){
+    .reel-card{ width:300px; height:190px; grid-template-columns:110px 1fr; border-radius:16px; }
+    .reel-metrics{ padding:16px 14px; gap:9px; }
+    .rm-label{ font-size:.66rem; }
+    .rm-val{ font-size:.88rem; }
+    .rm-val.accent{ font-size:1.05rem; }
+  }
+
+  /* ---- reel lightbox (click a card to zoom) ---- */
+  .reel-lightbox{
+    position:fixed; inset:0; z-index:200; background:rgba(27,31,59,.86);
+    display:flex; align-items:center; justify-content:center; padding:24px;
+    opacity:0; pointer-events:none; transition:opacity .3s;
+  }
+  .reel-lightbox.open{ opacity:1; pointer-events:auto; }
+  .reel-lightbox-inner{
+    background:var(--navy); border:1px solid var(--navy-line); border-radius:22px; overflow:hidden;
+    display:grid; grid-template-columns:1fr; max-width:520px; width:100%;
+    transform:scale(.92); transition:transform .3s;
+  }
+  .reel-lightbox.open .reel-lightbox-inner{ transform:scale(1); }
+  .reel-lightbox-inner .reel-shot{ height:auto; max-height:60vh; }
+  .reel-lightbox-inner .reel-shot img{ width:100%; height:100%; max-height:60vh; object-fit:contain; background:#000; }
+  .reel-lightbox-inner .reel-metrics{ padding:24px 26px; }
+  .reel-lightbox-close{
+    position:absolute; top:22px; right:24px; z-index:2;
+    font-family:var(--sans); font-weight:700; font-size:.86rem; color:#fff;
+    background:rgba(255,247,249,.14); border:1px solid rgba(255,247,249,.3);
+    padding:9px 18px; border-radius:999px; cursor:pointer; transition:background .2s;
+  }
+  .reel-lightbox-close:hover{ background:rgba(255,247,249,.28); }
+  @media (max-width:560px){
+    .reel-lightbox-close{ top:14px; right:14px; font-size:.76rem; padding:7px 14px; }
+  }
+
+  /* ---------- results gallery (contract / expand on hover) ---------- */
+  .results-section{ background:var(--off); }
+  .results-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+    padding-block:10px 30px;
+  }
+  @media (max-width:900px){ .results-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .results-grid{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+  @media (max-width:400px){ .results-grid{ gap:10px; } }
+  .results-card{
+    border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff;
+    position:relative; z-index:1;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .results-card{
+      transform:scale(.92);
+      transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1), z-index 0s .2s;
+      cursor:pointer;
+    }
+    .results-card:hover{
+      transform:scale(1.22); z-index:8;
+      box-shadow:0 34px 56px -22px rgba(27,31,59,.4);
+      transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1), z-index 0s 0s;
+    }
+  }
+  .results-shot{ aspect-ratio:4/3; overflow:hidden; background:var(--navy); }
+  .results-shot img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+  .results-cap{ padding:14px 16px; display:flex; align-items:center; justify-content:space-between; }
+  .results-tag{ font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--fuchsia-deep); }
+  .results-views{ font-weight:700; font-size:.92rem; color:var(--navy); }
+  @media (max-width:560px){
+    .results-cap{ padding:10px 12px; flex-direction:column; align-items:flex-start; gap:2px; }
+    .results-tag{ font-size:.6rem; }
+    .results-views{ font-size:.8rem; }
+  }
+
+  /* ================= PAGE 6 — CALLS (cal.com style) ================= */
+  .calls-section{ background:var(--off); }
+  .calls-hero{ display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; margin-bottom:52px; }
+  @media (max-width:760px){ .calls-hero{ grid-template-columns:1fr; } }
+  .calls-num{ font-family:var(--sans); font-weight:800; font-size:clamp(3.4rem,15vw,7.5rem); line-height:.9; color:var(--navy); letter-spacing:-.02em; }
+  .calls-num .accent{ color:var(--fuchsia); }
+  .calls-copy{ font-size:1.02rem; line-height:1.7; color:var(--navy-soft); max-width:46ch; }
+  @media (min-width:760px){ .calls-num{ font-size:clamp(4.5rem,11vw,7.5rem); } }
+
+  .cal-app{ border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#fff; }
+  .cal-topbar{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid var(--line); gap:12px; flex-wrap:wrap; }
+  .cal-brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:.94rem; color:var(--navy); }
+  .cal-brand .dot-logo{ width:20px; height:20px; border-radius:6px; background:var(--fuchsia); display:inline-block; }
+  .cal-count{ font-size:.78rem; font-weight:700; color:var(--fuchsia-deep); background:var(--fuchsia-tint); padding:6px 12px; border-radius:999px; white-space:nowrap; }
+  .cal-book-btn{
+    font-size:.78rem; font-weight:700; color:#fff; background:var(--fuchsia);
+    padding:8px 16px; border-radius:999px; text-decoration:none; white-space:nowrap;
+    transition:background .25s, transform .25s;
+  }
+  .cal-book-btn:hover{ background:var(--fuchsia-deep); transform:translateY(-2px); }
+  .cal-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+  /* ---- calendar screenshot slider (auto-advance + swipe + manual controls) ---- */
+  .cal-slider{ position:relative; background:var(--fuchsia-tint); }
+  .cal-slider-track{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .cal-slider-track::-webkit-scrollbar{ display:none; }
+  .cal-slide{ flex:0 0 100%; scroll-snap-align:start; display:flex; align-items:center; justify-content:center; padding:28px; }
+  .cal-slide img{ width:100%; max-width:520px; height:auto; border-radius:14px; border:1px solid var(--navy-line); box-shadow:0 18px 40px -20px rgba(27,31,59,.3); }
+  .cal-slider-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--navy-line);
+    background:#fff; color:var(--navy); font-size:1.1rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; transition:background .2s, color .2s;
+  }
+  .cal-slider-arrow:hover{ background:var(--fuchsia); color:#fff; }
+  .cal-slider-arrow.prev{ left:14px; }
+  .cal-slider-arrow.next{ right:14px; }
+  .cal-slider-dots{ display:flex; align-items:center; justify-content:center; gap:8px; padding:16px 0 22px; background:var(--fuchsia-tint); }
+  .cal-slider-dot{ width:7px; height:7px; border-radius:50%; background:var(--navy-line); border:none; padding:0; cursor:pointer; transition:background .25s, transform .25s; }
+  .cal-slider-dot.active{ background:var(--fuchsia); transform:scale(1.3); }
+  @media (max-width:560px){
+    .cal-slide{ padding:18px 14px; }
+    .cal-slider-arrow{ width:32px; height:32px; font-size:.95rem; }
+    .cal-slider-arrow.prev{ left:8px; }
+    .cal-slider-arrow.next{ right:8px; }
+  }
+  .cal-foot{ padding:14px 24px; font-size:.76rem; color:var(--navy-soft); background:var(--fuchsia-tint); border-top:1px solid var(--navy-line); }
+
+  /* ================= PAGE 7 — WHAT THIS PROVES ================= */
+  .proves-section{ background:var(--navy); color:var(--off); text-align:center; }
+  .proves-section .kicker{ justify-content:center; }
+  .proves-section .page-head{ margin-inline:auto; text-align:center; }
+  .proves-section .page-head h2{ color:var(--off); margin-inline:auto; max-width:22ch; }
+  .proves-lede{ font-size:1.1rem; color:rgba(255,247,249,.72); max-width:50ch; margin:18px auto 50px; line-height:1.7; }
+  .proves-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--navy-line); border:1px solid var(--navy-line); border-radius:18px; overflow:hidden; }
+  @media (max-width:900px){ .proves-grid{ grid-template-columns:repeat(2,1fr); } }
+  .proves-cell{ background:rgba(255,247,249,.03); padding:30px 18px; }
+  .proves-cell .pv-n{ font-family:var(--serif); font-style:italic; font-size:1.5rem; color:var(--fuchsia); margin-bottom:10px; }
+  .proves-cell .pv-t{ font-size:.88rem; color:rgba(255,247,249,.72); }
+  @media (max-width:480px){
+    .proves-cell{ padding:18px 10px; }
+    .proves-cell .pv-n{ font-size:1.15rem; margin-bottom:6px; }
+    .proves-cell .pv-t{ font-size:.74rem; }
+  }
+  .proves-close{ margin-top:54px; font-family:var(--serif); font-size:1.3rem; line-height:1.5; max-width:36ch; margin-inline:auto; text-wrap:balance; }
+
+  /* ================= PAGE 8 — CTA ================= */
+  .cta-section{ background:var(--off); text-align:center; padding-block:120px 100px; }
+  .cta-section .kicker{ justify-content:center; }
+  .cta-section h2{ font-size:clamp(2rem,4.4vw,3.1rem); max-width:20ch; margin-inline:auto; }
+  .cta-sub{ font-size:1.02rem; color:var(--navy-soft); max-width:46ch; margin:20px auto 40px; line-height:1.7; }
+  .work-with{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:44px; }
+  .work-pill{ font-size:.82rem; font-weight:600; padding:9px 18px; border-radius:999px; border:1px solid var(--line); color:var(--navy-soft); }
+  .btn{ display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:.96rem; padding:16px 30px; border-radius:999px; text-decoration:none; transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, background .25s; }
+  .btn-primary{ background:var(--fuchsia); color:#fff; box-shadow:0 12px 26px -10px rgba(233,30,140,.5); }
+  .btn-primary:hover{ transform:translateY(-3px); background:var(--fuchsia-deep); box-shadow:0 18px 32px -10px rgba(233,30,140,.55); }
+  .btn-ghost{ border:1.5px solid var(--navy); color:var(--navy); }
+  .btn-ghost:hover{ background:var(--navy); color:var(--off); transform:translateY(-3px); }
+  .cta-btn-row{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+</style>
+
+<nav class="sitenav">
+  <div class="wrap">
+    <a class="nav-brand" href="#cover">Rashika</a>
+    <a class="nav-book" href="https://rashika-consultation.vercel.app/" target="_blank" rel="noopener">Book a Call</a>
+  </div>
+</nav>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="cover" id="cover">
+  <div class="cover-grid"></div>
+  <div class="wrap">
+    <span class="kicker cover-kicker">Rashika · Organic Growth Case Study</span>
+    <h1 class="cover-headline">
+      <span class="line">38K+ FOLLOWERS.</span>
+      <span class="line">2 MONTHS.</span>
+      <span class="line accent">100% ORGANIC.</span>
+    </h1>
+    <p class="cover-sub">The strategy, content system &amp; organic marketing behind the growth, no ads, no shortcuts.</p>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 — THE PROOF ============ -->
+<section class="page proof-section" id="proof">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker on-dark">The proof</span>
+    </div>
+
+    <div class="proof-pair reveal">
+      <div class="pp-card">
+        <div class="pp-shot"><img src="assets/profile-baseline.jpg" alt="Instagram profile before growth: 213 followers, 50K views in the last 30 days"></div>
+        <span class="pp-tag">Before</span>
+        <h3 class="pp-title">213 followers. 50K views.</h3>
+      </div>
+      <div class="pp-card">
+        <div class="pp-shot"><img src="assets/profile-now.jpg" alt="Instagram profile after growth: 39.9K followers, 7.7M views in the last 30 days"></div>
+        <span class="pp-tag">After</span>
+        <h3 class="pp-title">39.9K followers. 7.7M views.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 — TRANSFORMATION ============ -->
+<section class="page transformation" id="transformation">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker fuchsia">The transformation</span>
+      <h2>Two months. Three numbers that matter.</h2>
+    </div>
+
+    <div class="transform-grid reveal">
+      <div class="transform-cell hero-cell">
+        <div class="t-num"><span class="accent">38K+</span></div>
+        <div class="t-label">Instagram followers gained</div>
+        <div class="t-window">In 2 months, from 213</div>
+      </div>
+      <div class="transform-cell">
+        <div class="t-num">50K <span class="t-arrow">→</span> <span class="accent">9M+</span></div>
+        <div class="t-label">Professional Dashboard reach</div>
+        <div class="t-window">Same 2-month window</div>
+      </div>
+      <div class="transform-cell">
+        <div class="t-num"><span class="accent">70+</span></div>
+        <div class="t-label">Calls booked, organically</div>
+        <div class="t-window">Direct from content, no ads</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PAGE 4 — CONTENT (horizontal marquee) ============ -->
+<section class="page content-section" id="content">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker on-dark">Content that drove the growth</span>
+      <h2>The funnel, in motion.</h2>
+    </div>
+  </div>
+
+  <div class="marquee-wrap reveal" id="marqueeWrap">
+    <span class="marquee-fade left"></span>
+    <span class="marquee-fade right"></span>
+    <div class="marquee-track" id="reelMarquee"></div>
+  </div>
+</section>
+
+<!-- ============ RESULTS GALLERY ============ -->
+<section class="page results-section" id="results">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker fuchsia">More results</span>
+      <h2>Trial reels and regular reels, side by side.</h2>
+    </div>
+    <div class="results-grid reveal" id="resultsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PAGE 6 — CALLS (cal.com style) ============ -->
+<section class="page calls-section" id="calls">
+  <div class="wrap">
+    <div class="page-head reveal" style="margin-bottom:0;">
+      <span class="kicker fuchsia">From reach to booked calls</span>
+    </div>
+
+    <div class="calls-hero reveal">
+      <div class="calls-num"><span data-count="70" data-suffix="+" class="accent">0</span></div>
+      <p class="calls-copy">The goal was never followers or views on their own. It was conversations. Every number on the pages before this one fed into this: <b>70+ discovery and growth calls</b>, booked directly off the back of content.</p>
+    </div>
+
+    <div class="cal-app reveal">
+      <div class="cal-topbar">
+        <div class="cal-brand"><span class="dot-logo"></span> Bookings</div>
+        <div class="cal-actions">
+          <span class="cal-count">70+ booked</span>
+          <a class="cal-book-btn" href="https://cal.com/rashikasurana" target="_blank" rel="noopener">Book on Cal.com →</a>
+        </div>
+      </div>
+      <div class="cal-slider" id="calSlider">
+        <button type="button" class="cal-slider-arrow prev" id="calPrev" aria-label="Previous">‹</button>
+        <div class="cal-slider-track" id="calSliderTrack">
+          <div class="cal-slide"><img src="assets/cal-slide-1.jpg" alt="Booking calendar screenshot, late August 2026"></div>
+          <div class="cal-slide"><img src="assets/cal-slide-2.jpg" alt="Booking calendar screenshot, late August 2026"></div>
+          <div class="cal-slide"><img src="assets/cal-slide-3.jpg" alt="Booking calendar screenshot, September 2026"></div>
+          <div class="cal-slide"><img src="assets/cal-slide-4.jpg" alt="Booking calendar screenshot, September 2026"></div>
+          <div class="cal-slide"><img src="assets/cal-slide-5.jpg" alt="Booking calendar screenshot, September 2026"></div>
+          <div class="cal-slide"><img src="assets/cal-slide-6.jpg" alt="Booking calendar screenshot, current week"></div>
+        </div>
+        <button type="button" class="cal-slider-arrow next" id="calNext" aria-label="Next">›</button>
+      </div>
+      <div class="cal-slider-dots" id="calDots"></div>
+      <div class="cal-foot">Attendee names blurred for client confidentiality. Dates, times and volume are real, pulled directly from the booking calendar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 7 — THE SYSTEM ============ -->
+<section class="page system-section" id="system">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker fuchsia">The organic growth system</span>
+      <h2>Not a viral moment. A funnel.</h2>
+    </div>
+
+    <div class="funnel-row reveal">
+      <div class="funnel-cell">
+        <span class="fc-tag">TOF</span>
+        <h3 class="fc-title">Discovery</h3>
+        <p class="fc-desc">Content built to reach people who don't follow yet, the widest part of the funnel.</p>
+        <div class="fc-pills"><span class="pill">Non-follower reach</span><span class="pill">Strong hooks</span></div>
+      </div>
+      <div class="funnel-cell">
+        <span class="fc-tag">MOF</span>
+        <h3 class="fc-title">Trust</h3>
+        <p class="fc-desc">Content that moves a viewer from "found this" to "this person knows what they're talking about."</p>
+        <div class="fc-pills"><span class="pill">Education</span><span class="pill">Authority</span></div>
+      </div>
+      <div class="funnel-cell">
+        <span class="fc-tag">BOF</span>
+        <h3 class="fc-title">Conversion</h3>
+        <p class="fc-desc">Content with a clear next step: turning attention into an actual enquiry.</p>
+        <div class="fc-pills"><span class="pill">Clear CTAs</span><span class="pill">Direct asks</span></div>
+      </div>
+      <div class="funnel-cell">
+        <span class="fc-tag">LEAD MAGNETS</span>
+        <h3 class="fc-title">The hook back</h3>
+        <p class="fc-desc">Resources built around real pain points, the reason someone actually opens the DM.</p>
+        <div class="fc-pills"><span class="pill">DMs</span><span class="pill">Lead capture</span></div>
+      </div>
+    </div>
+
+    <p class="system-note reveal">Every piece of content had a job. The goal was never just views. It was <b>reach, trust, and conversion</b>, connected on purpose.</p>
+  </div>
+</section>
+
+<!-- ============ PAGE 8 — WHAT THIS PROVES ============ -->
+<section class="page proves-section" id="proves">
+  <div class="wrap">
+    <div class="page-head reveal">
+      <span class="kicker on-dark">What this proves</span>
+      <h2>Going viral isn't the skill.</h2>
+    </div>
+    <p class="proves-lede reveal">Building a system that turns attention into opportunity, on repeat. That's the skill.</p>
+
+    <div class="proves-grid reveal">
+      <div class="proves-cell"><div class="pv-n">01</div><div class="pv-t">Reach new audiences</div></div>
+      <div class="proves-cell"><div class="pv-n">02</div><div class="pv-t">Build trust at scale</div></div>
+      <div class="proves-cell"><div class="pv-n">03</div><div class="pv-t">Create real demand</div></div>
+      <div class="proves-cell"><div class="pv-n">04</div><div class="pv-t">Generate conversations</div></div>
+      <div class="proves-cell"><div class="pv-n">05</div><div class="pv-t">Convert attention into opportunity</div></div>
+    </div>
+
+    <p class="proves-close reveal">This is the same system I build for clients.</p>
+  </div>
+</section>
+
+<!-- ============ PAGE 8 — CTA ============ -->
+<section class="cta-section" id="cta">
+  <div class="wrap">
+    <span class="kicker fuchsia reveal">Let's build yours</span>
+    <h2 class="reveal">Ready to build your organic growth engine?</h2>
+    <p class="cta-sub reveal">I work with founders, coaches, consultants and personal brands who want the same thing: real reach, real trust, and a calendar that fills itself.</p>
+    <div class="work-with reveal">
+      <span class="work-pill">Founders</span>
+      <span class="work-pill">Coaches &amp; consultants</span>
+      <span class="work-pill">Personal brands</span>
+      <span class="work-pill">Service businesses</span>
+    </div>
+    <div class="reveal cta-btn-row">
+      <a class="btn btn-primary" href="https://rashika-consultation.vercel.app/" target="_blank" rel="noopener">Work With Rashika →</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/raashikaaaaaa/" target="_blank" rel="noopener">Message @raashikaaaaaa</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    /* reveal on scroll */
+    var els = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold:.12});
+      els.forEach(function(el){ io.observe(el); });
+    } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+    /* animated counters */
+    var counters = document.querySelectorAll('[data-count]');
+    var animated = new WeakSet();
+    function animateCounter(el){
+      if(animated.has(el)) return; animated.add(el);
+      var target = parseInt(el.getAttribute('data-count'),10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var start = null, dur = 1200;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/dur, 1);
+        var eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(eased*target) + (p>=1? suffix : '');
+        if(p<1) requestAnimationFrame(step); else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    if('IntersectionObserver' in window){
+      var io2 = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ animateCounter(e.target); io2.unobserve(e.target); } });
+      }, {threshold:.6});
+      counters.forEach(function(c){ io2.observe(c); });
+    } else { counters.forEach(function(c){ c.textContent = c.getAttribute('data-count') + (c.getAttribute('data-suffix')||''); }); }
+
+    /* ---- reel marquee: build cards + duplicate for seamless loop ---- */
+    var reels = [
+      {img:'assets/reel-4m.jpg', views:'4.09M', reach:'1.24M', follow:'1,260'},
+      {img:'assets/reel-3m.jpg', views:'3.09M', reach:'1.66M', follow:'2,091'},
+      {img:'assets/reel-2-4m.jpg', views:'2.44M', reach:'1.49M', follow:'20,555'},
+      {img:'assets/reel-1-2m.jpg', views:'1.2M', reach:'721K', follow:'7,678'}
+    ];
+    var mq = document.getElementById('reelMarquee');
+    function cardHTML(r){
+      return '<div class="reel-card">' +
+        '<div class="reel-shot"><img src="'+r.img+'" alt="Reel insights screenshot"></div>' +
+        '<div class="reel-metrics">' +
+          '<div class="rm-row"><span class="rm-label">Views</span><span class="rm-val accent">'+r.views+'</span></div>' +
+          '<div class="rm-row"><span class="rm-label">Reach</span><span class="rm-val">'+r.reach+'</span></div>' +
+          '<div class="rm-row"><span class="rm-label">Followers gained</span><span class="rm-val">'+r.follow+'</span></div>' +
+        '</div></div>';
+    }
+    var html = reels.map(cardHTML).join('') + reels.map(cardHTML).join('');
+    mq.innerHTML = html;
+
+    /* auto-scroll marquee via scrollLeft (works alongside native swipe/drag), pause on interaction */
+    var marqueeWrap = document.getElementById('marqueeWrap');
+    var marqueeTrack = mq;
+    var mqPaused = false, mqDragging = false, mqDragStartX = 0, mqDragStartScroll = 0, mqLastTs = null;
+    var mqSpeed = 46; /* px per second */
+    var prm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function mqTick(ts){
+      if(!prm && !mqPaused && !mqDragging){
+        if(mqLastTs !== null){
+          var dt = (ts - mqLastTs) / 1000;
+          marqueeWrap.scrollLeft += mqSpeed * dt;
+          var half = marqueeTrack.scrollWidth / 2;
+          if(half > 0 && marqueeWrap.scrollLeft >= half){ marqueeWrap.scrollLeft -= half; }
+        }
+      }
+      mqLastTs = ts;
+      requestAnimationFrame(mqTick);
+    }
+    requestAnimationFrame(mqTick);
+
+    marqueeWrap.addEventListener('mouseenter', function(){ mqPaused = true; });
+    marqueeWrap.addEventListener('mouseleave', function(){ mqPaused = false; mqDragging = false; marqueeWrap.classList.remove('dragging'); });
+    marqueeWrap.addEventListener('touchstart', function(){ mqPaused = true; }, {passive:true});
+    marqueeWrap.addEventListener('touchend', function(){ setTimeout(function(){ mqPaused = false; }, 1200); }, {passive:true});
+    marqueeWrap.addEventListener('touchcancel', function(){ setTimeout(function(){ mqPaused = false; }, 1200); }, {passive:true});
+
+    /* mouse-drag to swipe on desktop */
+    var mqMoved = false;
+    marqueeWrap.addEventListener('mousedown', function(e){
+      mqDragging = true; mqPaused = true; mqMoved = false;
+      mqDragStartX = e.clientX; mqDragStartScroll = marqueeWrap.scrollLeft;
+      marqueeWrap.classList.add('dragging');
+    });
+    window.addEventListener('mousemove', function(e){
+      if(!mqDragging) return;
+      if(Math.abs(e.clientX - mqDragStartX) > 6) mqMoved = true;
+      marqueeWrap.scrollLeft = mqDragStartScroll - (e.clientX - mqDragStartX);
+    });
+    window.addEventListener('mouseup', function(){
+      if(!mqDragging) return;
+      mqDragging = false; mqPaused = false;
+      marqueeWrap.classList.remove('dragging');
+    });
+
+    /* ---- results gallery: trial reels + normal reels ---- */
+    var results = [
+      {img:'assets/card-4-1m.jpg', tag:'Reel', views:'4.09M views'},
+      {img:'assets/card-trial-4m.jpg', tag:'Trial reel · non-followers', views:'4M views'},
+      {img:'assets/card-3-1m.jpg', tag:'Reel', views:'3.09M views'},
+      {img:'assets/card-2-4m.jpg', tag:'Reel', views:'2.44M views'},
+      {img:'assets/card-trial-1m.jpg', tag:'Trial reel · non-followers', views:'1.02M views'},
+      {img:'assets/card-590k.jpg', tag:'Reel', views:'590K views'},
+      {img:'assets/card-564k.jpg', tag:'Reel', views:'564K views'},
+      {img:'assets/card-trial-306k.jpg', tag:'Trial reel · non-followers', views:'306K views'}
+    ];
+    document.getElementById('resultsGrid').innerHTML = results.map(function(r){
+      return '<div class="results-card">' +
+        '<div class="results-shot"><img src="'+r.img+'" alt="'+r.tag+' insight screenshot"></div>' +
+        '<div class="results-cap"><span class="results-tag">'+r.tag+'</span><span class="results-views">'+r.views+'</span></div>' +
+      '</div>';
+    }).join('');
+
+    /* ---- calendar screenshot slider: auto-advance every 3s + swipe + arrows/dots ---- */
+    (function(){
+      var track = document.getElementById('calSliderTrack');
+      var slides = track.children;
+      var count = slides.length;
+      var dotsWrap = document.getElementById('calDots');
+      var prevBtn = document.getElementById('calPrev');
+      var nextBtn = document.getElementById('calNext');
+      var idx = 0, timer = null, resumeTimeout = null;
+
+      for(var i=0;i<count;i++){
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'cal-slider-dot' + (i===0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        d.addEventListener('click', function(iCopy){ return function(){ goTo(iCopy); restart(); }; }(i));
+        dotsWrap.appendChild(d);
+      }
+      var dots = dotsWrap.querySelectorAll('.cal-slider-dot');
+
+      function goTo(i){
+        idx = (i + count) % count;
+        track.scrollTo({ left: idx * track.clientWidth, behavior:'smooth' });
+        dots.forEach(function(dot,di){ dot.classList.toggle('active', di===idx); });
+      }
+      function next(){ goTo(idx+1); }
+      function prev(){ goTo(idx-1); }
+      function start(){ timer = setInterval(next, 3000); }
+      function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+      function restart(){ stop(); clearTimeout(resumeTimeout); start(); }
+
+      nextBtn.addEventListener('click', function(){ next(); restart(); });
+      prevBtn.addEventListener('click', function(){ prev(); restart(); });
+
+      /* sync dots/index when user swipes manually */
+      var scrollDebounce;
+      track.addEventListener('scroll', function(){
+        clearTimeout(scrollDebounce);
+        scrollDebounce = setTimeout(function(){
+          idx = Math.round(track.scrollLeft / track.clientWidth);
+          dots.forEach(function(dot,di){ dot.classList.toggle('active', di===idx); });
+        }, 100);
+      }, {passive:true});
+
+      track.addEventListener('touchstart', function(){ stop(); }, {passive:true});
+      track.addEventListener('touchend', function(){ clearTimeout(resumeTimeout); resumeTimeout = setTimeout(start, 1500); }, {passive:true});
+      document.getElementById('calSlider').addEventListener('mouseenter', stop);
+      document.getElementById('calSlider').addEventListener('mouseleave', restart);
+
+      window.addEventListener('resize', function(){ track.scrollTo({ left: idx * track.clientWidth }); });
+
+      start();
+    })();
+
+    /* ---- reel lightbox: click a card to zoom it, close via backdrop or back button ---- */
+    var lightbox = document.createElement('div');
+    lightbox.className = 'reel-lightbox';
+    lightbox.innerHTML = '<button type="button" class="reel-lightbox-close">‹ Back</button><div class="reel-lightbox-inner"></div>';
+    document.body.appendChild(lightbox);
+    var lightboxInner = lightbox.querySelector('.reel-lightbox-inner');
+
+    function openLightbox(cardEl){
+      lightboxInner.innerHTML = cardEl.querySelector('.reel-shot').innerHTML +
+        '<div class="reel-metrics">' + cardEl.querySelector('.reel-metrics').innerHTML + '</div>';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox){ closeLightbox(); } });
+    lightbox.querySelector('.reel-lightbox-close').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeLightbox(); } });
+
+    mq.addEventListener('click', function(e){
+      if(mqMoved){ mqMoved = false; return; }
+      var card = e.target.closest('.reel-card');
+      if(card){ openLightbox(card); }
+    });
+  })();
+</script>
