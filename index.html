@@ -110,6 +110,33 @@
     max-width:42ch; margin:0;
   }
 
+  /* Mobile responsiveness for Cover Section */
+  @media (max-width:700px){
+    .cover{
+      min-height:auto;
+      padding-block:44px 54px;
+    }
+    .cover-kicker{ margin-bottom:24px; }
+    .cover-headline{
+      font-size:clamp(2.8rem, 10.5vw, 4.2rem);
+      line-height:1.04;
+      margin-bottom:24px;
+    }
+    .cover-sub{
+      font-size:1.12rem;
+      line-height:1.6;
+    }
+  }
+
+  @media (max-width:420px){
+    .cover{
+      padding-block:36px 44px;
+    }
+    .cover-headline{
+      font-size:clamp(2.4rem, 9.5vw, 3.6rem);
+    }
+  }
+
   /* ================= shared page shell ================= */
   .page{ padding-block:96px; }
   .page-head{ max-width:64ch; margin-bottom:48px; }
