@@ -48,6 +48,11 @@
     transition:background .25s, transform .25s;
   }
   .nav-book:hover{ background:var(--fuchsia-deep); transform:translateY(-2px); }
+  @media (max-width:700px){
+    .sitenav .wrap{ padding-block:18px; }
+    .nav-brand{ font-size:1.4rem; }
+    .nav-book{ font-size:.9rem; padding:11px 22px; }
+  }
 
   .kicker{
     font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
@@ -115,13 +120,15 @@
     max-width:42ch; margin:0;
   }
   @media (max-width:700px){
-    .cover{ min-height:0; padding-block:56px 48px; }
-    .cover-kicker{ margin-bottom:24px; font-size:.82rem; }
-    .cover-headline{ font-size:clamp(2.9rem, 12.5vw, 4.2rem); margin-bottom:22px; }
-    .cover-sub{ font-size:1.12rem; max-width:34ch; }
+    .cover{ min-height:0; padding-block:40px 32px; }
+    .cover::before{ width:360px; height:360px; top:-140px; right:-140px; }
+    .cover::after{ width:320px; height:320px; bottom:-160px; left:-120px; }
+    .cover-kicker{ margin-bottom:20px; font-size:.86rem; }
+    .cover-headline{ font-size:clamp(3rem, 13vw, 4.4rem); margin-bottom:20px; }
+    .cover-sub{ font-size:1.16rem; max-width:34ch; }
   }
   @media (max-width:420px){
-    .cover-headline{ font-size:clamp(2.5rem, 13vw, 3.6rem); }
+    .cover-headline{ font-size:clamp(2.6rem, 13.5vw, 3.7rem); }
   }
 
   /* ================= shared page shell ================= */
